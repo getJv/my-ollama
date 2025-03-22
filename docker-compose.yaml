@@ -1,0 +1,16 @@
+services:
+  ollama:
+    build:
+      context: ./ollama
+      dockerfile: ./ollama.dockerfile
+    container_name: ollama-server
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  ollama-data:
+    name: ollama-data
+    driver: local
